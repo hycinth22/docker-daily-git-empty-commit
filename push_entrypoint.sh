@@ -21,4 +21,4 @@ echo -e "\n0 7 * * * /push.sh\n" >> /etc/crontab
 
 service cron restart
 
-nohup /entrypoint.sh &
+/entrypoint.sh

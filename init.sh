@@ -23,3 +23,5 @@ service cron start
 
 echo "for test"
 bash /push.sh
+
+read -n1 -p "Press any key to continue..."

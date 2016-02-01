@@ -10,6 +10,7 @@ ENV GIT_URL **None**
 ENV GIT_EMAIL default@default.com
 ENV GIT_NAME pusher
 ENV PRIVATE_KEY **None**
+ENV CRON_TIME 0 7 * * *
 
 COPY init.sh /push_init.sh
 RUN chmod +x /push_init.sh

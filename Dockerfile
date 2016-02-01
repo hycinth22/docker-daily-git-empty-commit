@@ -20,4 +20,4 @@ RUN chmod +x /push.sh
 
 EXPOSE 22
 
-CMD /push_init.sh
+ENTRYPOINT /push_init.sh

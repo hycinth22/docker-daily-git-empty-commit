@@ -17,9 +17,6 @@ if [ "${PRIVATE_KEY}" != "**None**" ]; then
     echo ${PRIVATE_KEY} >> /root/.ssh/id_rsa
 fi
 
-echo -e "\n${CRON_TIME} /push.sh\n" >> /etc/crontab
+echo -e "\n${CRON_TIME} root /push.sh\n" >> /etc/crontab
 
-service cron restart
-
-# startup ssh daemon
-bash /run.sh &
+service cron start

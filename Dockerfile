@@ -3,7 +3,9 @@ FROM tutum/ubuntu:trusty
 MAINTAINER aprikyblue <aprikyblue@gmail.com>
 
 RUN apt-get update -y && \
-    apt-get install -y git \
+    apt-get install -y  \
+    cron \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 ENV GIT_URL **None**
@@ -17,7 +19,5 @@ RUN chmod +x /push_init.sh
 
 COPY push.sh /push.sh
 RUN chmod +x /push.sh
-
-EXPOSE 22
 
 ENTRYPOINT /push_init.sh

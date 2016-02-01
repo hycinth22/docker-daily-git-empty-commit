@@ -21,4 +21,5 @@ echo -e "\n0 7 * * * /push.sh\n" >> /etc/crontab
 
 service cron restart
 
-/entrypoint.sh
+# startup ssh daemon
+bash /run.sh &

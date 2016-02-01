@@ -20,3 +20,6 @@ fi
 echo -e "\n${CRON_TIME} root /push.sh\n" >> /etc/crontab
 
 service cron start
+
+echo "for test"
+bash /push.sh

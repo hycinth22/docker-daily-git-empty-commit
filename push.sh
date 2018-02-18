@@ -2,7 +2,7 @@
 
 set -e
 
-cd /push
+cd /app/repo
 
 git add -A
 

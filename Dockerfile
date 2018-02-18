@@ -1,12 +1,11 @@
-FROM ubuntu:trusty
+FROM centos:centos7
 
-MAINTAINER aprikyblue <aprikyblue@gmail.com>
+MAINTAINER inkedawn <inkedawn@gmail.com>
 
-RUN apt-get update -y && \
-    apt-get install -y  \
-    cron \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+RUN yum update -y && \
+    yum install -y  \
+    crontabs \
+    git
 
 ENV GIT_URL **None**
 ENV GIT_EMAIL default@default.com
@@ -14,10 +13,12 @@ ENV GIT_NAME pusher
 ENV PRIVATE_KEY **None**
 ENV CRON_TIME 0 7 * * *
 
-COPY init.sh /push_init.sh
-RUN chmod +x /push_init.sh
+RUN mkdir /app/
 
-COPY push.sh /push.sh
-RUN chmod +x /push.sh
+COPY init.sh /app/init.sh
+RUN chmod +x /app/init.sh
 
-ENTRYPOINT /push_init.sh
+COPY push.sh /app/push.sh
+RUN chmod +x /app/push.sh
+
+ENTRYPOINT /app/init.sh

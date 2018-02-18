@@ -1,27 +1,30 @@
 #!/bin/bash
-
 set -e
 
-git config --global user.email "$GIT_EMAIL"
+mkdir /app/repo/
+git clone ${GIT_URL} /app/repo
+git config --global user.email "${GIT_EMAIL}"
+git config --global user.name "${GIT_NAME}"
 
-git config --global user.name "$GIT_NAME"
-
-git clone $GIT_URL /push
+if [ "${GIT_URL}" == "**None**" ]; then
+    echo "=> Please Set GIT_URL GIT_EMAIL GIT_NAME"
+	exit
+fi
 
 if [ "${PRIVATE_KEY}" != "**None**" ]; then
     echo "=> Found private key"
-    mkdir -p /root/.ssh
-    chmod 700 /root/.ssh
-    touch /root/.ssh/id_rsa
+	
+    mkdir -p ~/.ssh
+    chmod 700 ~t/.ssh
+	
+    touch ~/.ssh/id_rsa
     chmod 600 /root/.ssh/id_rsa
-    echo ${PRIVATE_KEY} >> /root/.ssh/id_rsa
+    echo ${PRIVATE_KEY} > /root/.ssh/id_rsa
 fi
 
-echo -e "\n${CRON_TIME} root /push.sh\n" >> /etc/crontab
+service crond start
+echo -e "\n${CRON_TIME} root /app/push.sh\n" >> /etc/crontab
+service crond reload
 
-service cron start
-
-echo "for test"
-bash /push.sh
-
-read -n1 -p "Press any key to continue..."
+echo "push for test"
+/app/push.sh

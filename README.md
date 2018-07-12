@@ -11,7 +11,7 @@ docker镜像，定时向指定仓库推送空提交
 
 # Getting Started
 
-1. Chnage to work directory
+1. Change to work directory
 
     cd /path/to/the/repo
 

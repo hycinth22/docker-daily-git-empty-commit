@@ -1,6 +1,6 @@
 FROM centos:centos7
 
-MAINTAINER inkedawn <inkedawn@gmail.com>
+MAINTAINER pastral1024 <pastral1024@gmail.com>
 
 RUN yum update -y && \
     yum install -y  \
